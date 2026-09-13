@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom"
 import {useState,useRef,useEffect} from "react"
 import {HiMenu,HiX} from "react-icons/hi"
-import {FiDownload} from "react-icons/fi"
+import {FiDownload,FiYoutube} from "react-icons/fi"
 import logo from "../assets/sos-logo.png"
 
 function Navbar(){
@@ -10,11 +10,11 @@ const[hoverOpen,setHoverOpen]=useState(false)
 const[clickOpen,setClickOpen]=useState(false)
 const[mobileOpen,setMobileOpen]=useState(false)
 const[mobileServiceOpen,setMobileServiceOpen]=useState(false)
-
+const[appMenuOpen,setAppMenuOpen]=useState(false)
 const dropdownRef=useRef(null)
 
 const isOpen=hoverOpen||clickOpen
-
+const youtubeLink="https://youtube.com/shorts/Cd5EbVAHnQM?si=0L7U3wcRSiQRnMnN"
 useEffect(()=>{
 function handleClickOutside(e){
 if(dropdownRef.current&&!dropdownRef.current.contains(e.target)){
@@ -114,14 +114,44 @@ className="hidden md:block bg-[#1d398d] text-white px-5 py-2 rounded-lg hover:bg
 >
 Apply Now →
 </Link> */}
-<a
-  href="/salvation_app.apk"
-  download="Salvation-App.apk"
-  className="hidden md:flex items-center gap-2 bg-[#1d398d] text-white px-5 py-2 rounded-lg hover:bg-[#142a66]"
+<div className="hidden md:block relative">
+
+<button
+  onClick={()=>setAppMenuOpen(!appMenuOpen)}
+  className="flex items-center gap-2 bg-[#1d398d] text-white px-5 py-2 rounded-lg hover:bg-[#142a66]"
 >
   <FiDownload className="text-lg" />
   Salvation App
+</button>
+
+{appMenuOpen && (
+
+<div className="absolute right-0 top-full mt-2 w-52 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50">
+
+<a
+  href={youtubeLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50"
+>
+  <FiYoutube className="text-red-600 text-lg" />
+  Watch Video
 </a>
+
+<a
+  href="/salvation_app.apk"
+  download="Salvation-App.apk"
+  className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50"
+>
+  <FiDownload className="text-[#1d398d] text-lg" />
+  Download App
+</a>
+
+</div>
+
+)}
+
+</div>
 {/* HAMBURGER */}
 
 <button
@@ -236,20 +266,44 @@ CONTACT
 </Link>
 </li>
 
-
-{/* APPLY BUTTON */}
-
 <li className="w-full px-8">
+
+<button
+  onClick={()=>setAppMenuOpen(!appMenuOpen)}
+  className="w-full flex items-center justify-center gap-2 bg-[#1d398d] text-white py-2 rounded-lg hover:bg-[#142a66]"
+>
+  <FiDownload className="text-lg" />
+  Salvation App
+</button>
+
+{appMenuOpen && (
+
+<div className="mt-2 bg-white rounded-lg shadow-md border overflow-hidden">
+
+<a
+  href={youtubeLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={()=>setMobileOpen(false)}
+  className="flex items-center justify-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50"
+>
+  <FiYoutube className="text-red-600 text-lg" />
+  Watch Video
+</a>
 
 <a
   href="/salvation_app.apk"
   download="Salvation-App.apk"
   onClick={()=>setMobileOpen(false)}
-  className="flex items-center justify-center gap-2 bg-[#1d398d] text-white py-2 rounded-lg hover:bg-[#142a66] text-center"
+  className="flex items-center justify-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50"
 >
-  <FiDownload className="text-lg" />
-  Salvation App
+  <FiDownload className="text-[#1d398d] text-lg" />
+  Download App
 </a>
+
+</div>
+
+)}
 
 </li>
 
