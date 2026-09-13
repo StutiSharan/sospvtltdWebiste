@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom"
 import {useState,useRef,useEffect} from "react"
 import {HiMenu,HiX} from "react-icons/hi"
+import {FiDownload} from "react-icons/fi"
 import logo from "../assets/sos-logo.png"
 
 function Navbar(){
@@ -106,14 +107,21 @@ Payroll Management
 </ul>
 
 {/* DESKTOP BUTTON */}
-
+{/* 
 <Link
 to="/jobs"
 className="hidden md:block bg-[#1d398d] text-white px-5 py-2 rounded-lg hover:bg-[#142a66]"
 >
 Apply Now →
-</Link>
-
+</Link> */}
+<a
+  href="/salvation_app.apk"
+  download="Salvation-App.apk"
+  className="hidden md:flex items-center gap-2 bg-[#1d398d] text-white px-5 py-2 rounded-lg hover:bg-[#142a66]"
+>
+  <FiDownload className="text-lg" />
+  Salvation App
+</a>
 {/* HAMBURGER */}
 
 <button
@@ -233,13 +241,15 @@ CONTACT
 
 <li className="w-full px-8">
 
-<Link
-to="/jobs"
-onClick={()=>setMobileOpen(false)}
-className="block bg-[#1d398d] text-white py-2 rounded-lg hover:bg-[#142a66]"
+<a
+  href="/salvation_app.apk"
+  download="Salvation-App.apk"
+  onClick={()=>setMobileOpen(false)}
+  className="flex items-center justify-center gap-2 bg-[#1d398d] text-white py-2 rounded-lg hover:bg-[#142a66] text-center"
 >
-Apply Now →
-</Link>
+  <FiDownload className="text-lg" />
+  Salvation App
+</a>
 
 </li>
 
